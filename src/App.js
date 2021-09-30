@@ -1,7 +1,17 @@
 import logo from './logo.svg';
+import React,{ useState }from 'react';
+import LocationForm from './components/LocationForm'
+import MapVisuals from './components/MapVisual';
 import './App.css';
 
 function App() {
+
+  const [quakeLocations,setQuakeLocations] = useState([])
+
+  const handleLocationChange = (data) => {
+    setQuakeLocations(data)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +27,8 @@ function App() {
         >
           Learn React
         </a>
+        <LocationForm handleLocation={handleLocationChange}/>
+        <MapVisuals locations={quakeLocations}/>
       </header>
     </div>
   );
