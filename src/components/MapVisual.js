@@ -16,7 +16,7 @@ const MapVisuals = ({locations}) =>{
     //const list = [...locations]
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyBE5Q8H8CJ3r_qq6mJy3XKiSPXYbtDOzcw"
+    googleMapsApiKey: "API_KEY_HERE"
   })
 
   const [map, setMap] = React.useState(null)
