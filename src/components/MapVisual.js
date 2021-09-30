@@ -11,6 +11,17 @@ const center = {
   lng: -38.523
 };
 
+// TO DO: 
+// - Change where MapVisuals is called. That way it is not called
+// at time to render. Put it in LocationForm and have it display the map
+// with Markers for earthquake locations.
+// 
+// - Make the site pretty
+// 
+// - Make sure gh-pages displays the webpage online 
+// 
+// 
+
 const MapVisuals = ({locations}) =>{
     console.log('IN Map Visuals',locations)
     //const list = [...locations]
