@@ -1,15 +1,16 @@
 import logo from './logo.svg';
-import React,{ useState }from 'react';
+import React, { useState } from 'react';
 import LocationForm from './components/LocationForm'
 import MapVisuals from './components/MapVisual';
 import './App.css';
 
 function App() {
 
-  const [quakeLocations,setQuakeLocations] = useState([])
+  const [quakeData,setQuakeData] = useState([{}])
 
-  const handleLocationChange = (data) => {
-    setQuakeLocations(data)
+  const handleData = (data) =>{
+    setQuakeData(data)
+    console.log('quake data in maps',quakeData)
   }
 
   return (
@@ -27,8 +28,7 @@ function App() {
         >
           Learn React
         </a>
-        <LocationForm handleLocation={handleLocationChange}/>
-        <MapVisuals locations={quakeLocations}/>
+        <LocationForm />
       </header>
     </div>
   );

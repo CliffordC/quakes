@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Geonames from 'geonames.js';
-
+import MapVisuals from './MapVisual';
 
 const geonames = Geonames({
     username: 'cchirwa',
@@ -10,6 +10,7 @@ const geonames = Geonames({
 
 async function generator(place) {
     try{
+        const result = []
         const locale = await geonames.search({q: `${place}`}) 
         //console.log(locale.geonames[0])
 
@@ -22,7 +23,6 @@ async function generator(place) {
         const south = parseFloat(lat - .10)
         const west = parseFloat(lng - .10)
         const east = parseFloat(lng + .10)
-        console.log(south,north,east,west)
 
         const earthQuakeData= await geonames.earthquakes({south,north,east,west});
         //const countries = await geonames.countryInfo({}) //get continents
@@ -30,26 +30,55 @@ async function generator(place) {
         //const regions = await geonames.children({geonameId: states.geonames[0].geonameId});
         //const cities = await geonames.children({geonameId: regions.geonames[0].geonameId});
         //console.log(continents);
-        
-        return (earthQuakeData);
+        //console.log(earthQuakeData.earthquakes)
+
+        const list =   earthQuakeData.earthquakes
+        list.forEach( element => {
+          const chunck = {
+            lat: element.lat,
+            lng: element.lng
+          }
+          result.push(chunck)
+        });
+        console.log('quake data: ',(result))
+        return (result);
       }catch(err){
         console.error(err);
       }
 }
 
-const LocationForm = (props) => {
+const defaultData = [{
+        lat: 47.60,
+        lng: -122.33}]
+
+const LocationForm = (props) =>{
 
     const [location,setLocation] = useState("")
+    const [quakeData,setQuakeData] = useState([])
+
+    const MajorQuake = {
+      lat: 38.14,
+      lng: 73.41
+    } 
+  
 
     const addLocation = (event) => {
         event.preventDefault()
-        const list = []
-        const data = generator(location)
-        data.earthquakes.forEach( element => {
-             list.push(element.lat,element.lng)    
-        })
-        console.log(list)
-        //props.handleLocation(data)
+        generator(location).then(res => setQuakeData(res))
+        // //console.log('data length', data.length)
+        // setTimeout(()=> {
+        //   console.log('length',(data))
+        //   const list = {...data}
+        //   //if(data.length>0){
+        //     props.handleData(list)
+        //   // }else{
+        //   //   console.log('default data')
+        //   //   const defaultData = [{
+        //   //     lat: 47.60,
+        //   //     lng: -122.33}]
+        //   //   handleData(defaultData)
+        //   // } 
+        //   }, 5000);
       }
 
     const handleLocationChange = (event) => {
@@ -57,7 +86,6 @@ const LocationForm = (props) => {
         setLocation(event.target.value)
     }
     
-
     return (
         <div>
             <form onSubmit={addLocation}>
@@ -65,7 +93,13 @@ const LocationForm = (props) => {
                 value={location} 
                 onChange={handleLocationChange}/>
                 <button type="submit">search</button>
-            </form>   
+            </form> 
+            <div >
+            { 
+              quakeData.length>0?
+             <MapVisuals data={quakeData}/>:<MapVisuals data={defaultData} />
+            }
+            </div>
         </div>
     )
 }
