@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/quakes/static/css/main.193dc962.chunk.css",
-    "main.js": "/quakes/static/js/main.4fba4f0c.chunk.js",
-    "main.js.map": "/quakes/static/js/main.4fba4f0c.chunk.js.map",
+    "main.js": "/quakes/static/js/main.cc63846a.chunk.js",
+    "main.js.map": "/quakes/static/js/main.cc63846a.chunk.js.map",
     "runtime-main.js": "/quakes/static/js/runtime-main.4d11322c.js",
     "runtime-main.js.map": "/quakes/static/js/runtime-main.4d11322c.js.map",
     "static/js/2.44df6393.chunk.js": "/quakes/static/js/2.44df6393.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.4d11322c.js",
     "static/js/2.44df6393.chunk.js",
     "static/css/main.193dc962.chunk.css",
-    "static/js/main.4fba4f0c.chunk.js"
+    "static/js/main.cc63846a.chunk.js"
   ]
 }
