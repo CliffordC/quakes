@@ -1,15 +1,15 @@
 import React from 'react';
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker, InfoBox } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
   height: '650px'
 };
 
-const center = {
-  lat: parseFloat(47.60),
-  lng: parseFloat(-122.33)
-};
+const center = [{
+  lat: 47.60,
+  lng: -122.33
+}];
 
 // TO DO: 
 // - Change where MapVisuals is called. That way it is not called
@@ -56,6 +56,7 @@ const MapVisuals = ({data}) =>{
               <Marker
                 position={{ lat: element.lat, lng: element.lng }}
                 key={index}
+                onClick={()=>alert(`Magnitude ${element.mag}`)}
               />)
              })
              }

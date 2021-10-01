@@ -39,8 +39,10 @@ async function generator(place) {
     list.forEach( element => {
       const earthquakeData = {
         lat: element.lat,
-        lng: element.lng
+        lng: element.lng,
+        mag : element.magnitude
       }
+      console.log(list)
       result.push(earthquakeData)
     });
 
