@@ -4,4 +4,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Resources used
 
-This could not have been possible without the work of Geonames team.
+This could not have been possible without the work of Geonames team and google maps.
